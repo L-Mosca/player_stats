@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-android'
+}
+
+android {
+    namespace 'br.com.lol_app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "br.com.lol_app"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "APP_NAME", "\"LoL App/\"")
+        buildConfigField("String", "API_URL", "\"https://ca-blenders-back-dev.blackrock-a22e4c4a.westus.azurecontainerapps.io/\"")
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig release.signingConfig
+        }
+    }
+
+    flavorDimensions 'environment'
+    productFlavors {
+        develop {
+            applicationIdSuffix '.dev'
+            resValue "string", "app_name", "[Dev] LoL App"
+            dimension 'environment'
+
+            buildConfigField("String", "APP_NAME", "\"LoL App Develop/\"")
+            buildConfigField("String", "API_URL", "\"https://ca-blenders-back-dev.blackrock-a22e4c4a.westus.azurecontainerapps.io/\"")
+        }
+        prod {
+            resValue "string", "app_name", "LoL App"
+            dimension 'environment'
+
+            buildConfigField("String", "APP_NAME", "\"LoL App/\"")
+            buildConfigField("String", "API_URL", "\"https://ca-blenders-back-dev.blackrock-a22e4c4a.westus.azurecontainerapps.io/\"")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        buildConfig true
+        viewBinding true
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+apply from: './dependencies.gradle'
+
