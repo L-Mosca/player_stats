@@ -14,7 +14,7 @@
         android:background="@color/white"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_nav_graph"
-        tools:context=".MainActivity" />
+        tools:context=".screen.host.MainActivity" />
 
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/navBottom"

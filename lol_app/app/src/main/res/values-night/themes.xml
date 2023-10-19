@@ -1,7 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Lol_app" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Base.Theme.Lol_app" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/blue_600</item>
+
+        <item name="android:textViewStyle">@style/Base.MaterialTextView</item>
+        <item name="materialCardViewStyle">@style/Base.MaterialCard</item>
+        <item name="buttonStyle">@style/Base.ButtonStyle</item>
+    </style>
+
+    <style name="Theme.Lol_app" parent="Base.Theme.Lol_app" />
+
+    <style name="Base.MaterialTextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/gold_200</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Base.MaterialCard" parent="Widget.MaterialComponents.CardView">
+        <item name="android:backgroundTint">@color/blue_550</item>
+        <item name="android:elevation">4dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="android:strokeColor">@color/blue_700</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="Base.ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_default_background</item>
     </style>
 </resources>
