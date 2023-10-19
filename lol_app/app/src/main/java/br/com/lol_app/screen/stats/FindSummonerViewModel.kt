@@ -5,5 +5,5 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class StatsViewModel @Inject constructor() : BaseViewModel() {
+class FindSummonerViewModel @Inject constructor() : BaseViewModel() {
 }
