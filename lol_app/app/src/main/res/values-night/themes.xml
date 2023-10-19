@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.Lol_app" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -7,6 +7,7 @@
         <item name="android:textViewStyle">@style/Base.MaterialTextView</item>
         <item name="materialCardViewStyle">@style/Base.MaterialCard</item>
         <item name="buttonStyle">@style/Base.ButtonStyle</item>
+        <item name="textInputStyle">@style/Base.TextInputLayout</item>
     </style>
 
     <style name="Theme.Lol_app" parent="Base.Theme.Lol_app" />
@@ -26,5 +27,17 @@
 
     <style name="Base.ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/button_default_background</item>
+    </style>
+
+    <style name="Base.TextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="startIconTint">@color/gold_500</item>
+        <item name="endIconTint">@color/gold_500</item>
+        <item name="android:textColorHint">@color/gold_700</item>
+        <item name="boxStrokeColor">@color/blue_550</item>
+        <item name="boxStrokeWidth">1dp</item>
     </style>
 </resources>

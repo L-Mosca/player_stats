@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">lol_app</string>
     <string name="search_summoner">Buscar Invocador</string>
+    <string name="summoner_name">Nome do invocador</string>
 </resources>

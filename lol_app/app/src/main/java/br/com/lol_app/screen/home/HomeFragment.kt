@@ -13,12 +13,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val viewModel: HomeViewModel by viewModels()
 
     override fun initViews() {
-        viewModel.test()
     }
 
     override fun initObservers() {
-        viewModel.test.observe(viewLifecycleOwner) {
-            showLongToast(it)
-        }
     }
 }
