@@ -18,7 +18,7 @@
     </style>
 
     <style name="Base.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="android:backgroundTint">@color/blue_550</item>
+        <item name="android:backgroundTint">@color/blue_500</item>
         <item name="android:elevation">4dp</item>
         <item name="cardCornerRadius">8dp</item>
         <item name="android:strokeColor">@color/blue_700</item>
@@ -37,7 +37,7 @@
         <item name="startIconTint">@color/gold_500</item>
         <item name="endIconTint">@color/gold_500</item>
         <item name="android:textColorHint">@color/gold_700</item>
-        <item name="boxStrokeColor">@color/blue_550</item>
+        <item name="boxStrokeColor">@color/blue_500</item>
         <item name="boxStrokeWidth">1dp</item>
     </style>
 </resources>

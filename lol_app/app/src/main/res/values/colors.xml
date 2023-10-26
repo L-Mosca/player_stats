@@ -3,14 +3,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="blue_100">#FFCDFAFA</color>
-    <color name="blue_200">#FF0AC8B9</color>
-    <color name="blue_300">#FF0397AB</color>
-    <color name="blue_400">#FF005A82</color>
-    <color name="blue_500">#FF0A323C</color>
-    <color name="blue_550">#0B172E</color>
+    <color name="blue_050">#FF1E3563</color>
+    <color name="blue_100">#FF182D58</color>
+    <color name="blue_200">#FF13254B</color>
+    <color name="blue_300">#FF112143</color>
+    <color name="blue_400">#FF0E1C39</color>
+    <color name="blue_500">#FF0B172E</color>
     <color name="blue_600">#FF091428</color>
     <color name="blue_700">#FF0A1428</color>
+    <color name="blue_800">#FF091121</color>
+    <color name="blue_900">#FF060B15</color>
 
     <color name="gold_100">#FFF0E6D2</color>
     <color name="gold_200">#FFC8AA6E</color>

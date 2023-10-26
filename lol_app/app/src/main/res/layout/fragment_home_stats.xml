@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_dark_blue">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSummonerName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:enabled="false"
+        app:endIconMode="clear_text"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/ic_search">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSummonerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_500"
+            android:enabled="false"
+            android:hint="@string/search_summoner_name"
+            android:imeOptions="actionSearch"
+            android:inputType="textFilter"
+            android:textColor="@color/gold_200"
+            android:textColorHint="@color/gold_700" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <View
+        android:id="@+id/vSummonerField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/tilSummonerName"
+        app:layout_constraintEnd_toEndOf="@id/tilSummonerName"
+        app:layout_constraintStart_toStartOf="@id/tilSummonerName"
+        app:layout_constraintTop_toTopOf="@id/tilSummonerName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

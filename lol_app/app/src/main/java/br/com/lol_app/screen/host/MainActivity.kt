@@ -3,6 +3,7 @@ package br.com.lol_app.screen.host
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import br.com.lol_app.R
@@ -49,6 +50,10 @@ class MainActivity : AppCompatActivity() {
     private fun onInitObservers() {
         mainViewModel.navGraphId.observe(this) { navGraphResource ->
             navController.navigate(navGraphResource)
+        }
+
+        mainViewModel.showNavBottom.observe(this) {
+            binding.navBottom.isVisible = it
         }
     }
 }

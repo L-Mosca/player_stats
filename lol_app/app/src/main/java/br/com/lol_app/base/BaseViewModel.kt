@@ -45,7 +45,7 @@ abstract class BaseViewModel : ViewModel() {
         }
     }
 
-    protected fun defaultCatch(
+    private fun defaultCatch(
         throwable: Throwable,
         exceptionHandler: ((Throwable) -> Unit)? = null,
         defaultErrorMessage: Int? = null

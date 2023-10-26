@@ -1,6 +1,7 @@
 package br.com.lol_app.domain.services.api
 
 import br.com.lol_app.BuildConfig
+import br.com.lol_app.domain.model.summoner.SummonerResponse
 import br.com.lol_app.domain.services.preferences.PreferencesHelperContract
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
@@ -8,6 +9,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Path
+import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 interface DbApi {
@@ -38,6 +43,11 @@ interface DbApi {
                 .addInterceptor { chain ->
                     var newRequest = chain.request()
 
+
+                    newRequest =
+                        newRequest.newBuilder()
+                            .addHeader("X-Riot-Token", BuildConfig.API_KEY)
+                            .build()
                     /*preferencesHelper.getToken()?.let { token ->
                         newRequest = newRequest.newBuilder()
                             .addHeader("Authorization", "Bearer $token")
@@ -49,4 +59,7 @@ interface DbApi {
                 .build()
         }
     }
+
+    @GET(ApiConstants.SUMMONER_BY_NAME)
+    suspend fun fetchSummonerByName(@Path("name") name: String): SummonerResponse?
 }

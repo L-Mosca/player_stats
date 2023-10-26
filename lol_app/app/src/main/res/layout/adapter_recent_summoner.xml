@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clRecentSummoner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivSummonerIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/img_summoner_test"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvSummonerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="14dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/ivSummonerIcon"
+        app:layout_constraintStart_toEndOf="@id/ivSummonerIcon"
+        app:layout_constraintTop_toTopOf="@id/ivSummonerIcon"
+        tools:text="Lêmure de Muleta" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivSummonerRank"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="@id/tvSummonerName"
+        app:layout_constraintTop_toBottomOf="@id/tvSummonerName"
+        app:srcCompat="@drawable/img_summoner_test" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvSummonerRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/gold_500"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/ivSummonerRank"
+        app:layout_constraintStart_toEndOf="@id/ivSummonerRank"
+        app:layout_constraintTop_toTopOf="@id/ivSummonerRank"
+        tools:text="Unranked" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivDelete"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivSummonerIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivSummonerIcon"
+        app:srcCompat="@drawable/ic_close"
+        app:tint="@color/gold_500" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivFavorite"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivSummonerIcon"
+        app:layout_constraintEnd_toStartOf="@id/ivDelete"
+        app:layout_constraintTop_toTopOf="@id/ivSummonerIcon"
+        app:srcCompat="@drawable/ic_favorite"
+        app:tint="@color/gold_500" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/blue_800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivSummonerIcon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "APP_NAME", "\"LoL App/\"")
-        buildConfigField("String", "API_URL", "\"https://ca-blenders-back-dev.blackrock-a22e4c4a.westus.azurecontainerapps.io/\"")
+        buildConfigField("String", "API_URL", "\"https://br1.api.riotgames.com\"")
+        buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
     }
 
     buildTypes {
@@ -45,14 +46,17 @@ android {
             dimension 'environment'
 
             buildConfigField("String", "APP_NAME", "\"LoL App Develop/\"")
-            buildConfigField("String", "API_URL", "\"https://ca-blenders-back-dev.blackrock-a22e4c4a.westus.azurecontainerapps.io/\"")
+            buildConfigField("String", "API_URL", "\"https://br1.api.riotgames.com\"")
+            buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
+
         }
         prod {
             resValue "string", "app_name", "LoL App"
             dimension 'environment'
 
             buildConfigField("String", "APP_NAME", "\"LoL App/\"")
-            buildConfigField("String", "API_URL", "\"https://ca-blenders-back-dev.blackrock-a22e4c4a.westus.azurecontainerapps.io/\"")
+            buildConfigField("String", "API_URL", "\"https://br1.api.riotgames.com\"")
+            buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
         }
     }
 

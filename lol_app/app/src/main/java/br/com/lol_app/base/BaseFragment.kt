@@ -1,5 +1,8 @@
 package br.com.lol_app.base
 
+import android.graphics.ImageDecoder
+import android.graphics.drawable.AnimatedImageDrawable
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +12,11 @@ import androidx.activity.addCallback
 import androidx.annotation.StringRes
 import androidx.appcompat.R
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import br.com.lol_app.databinding.IncludeLoadingBinding
+import br.com.lol_app.utils.LoadingType
 import com.google.android.material.snackbar.Snackbar
 
 @Suppress("UNCHECKED_CAST")
@@ -29,9 +35,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     abstract fun initObservers()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         viewBinding = bindingInflater.invoke(inflater)
         return viewBinding?.root
@@ -93,8 +97,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
      * @param customLogic Use this to add the desired options to your PopupMenu as well
      * as the action to be performed after those options are clicked
      *
-     */
-    /*fun showPopupMenu(anchorView: View, customLogic: (popupMenu: PopupMenu) -> Unit) {
+     *//*fun showPopupMenu(anchorView: View, customLogic: (popupMenu: PopupMenu) -> Unit) {
         val popupMenu = PopupMenu(
             requireContext(),
             anchorView,
@@ -116,6 +119,39 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         }
     }*/
 
+    fun showLoading(
+        loadingView: IncludeLoadingBinding,
+        isLoading: Boolean = true,
+        loadingType: LoadingType = LoadingType.MAIN_LOADING
+    ) {
+        with(loadingView) {
+            if (isLoading) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    clLoading.isVisible = true
+                    val imageRes =
+                        if (loadingType == LoadingType.SECONDARY_LOADING)
+                            br.com.lol_app.R.drawable.gif_tea_loading
+                        else br.com.lol_app.R.drawable.gif_loading
+
+                    lavLoading.isVisible = false
+                    ivLoading.isVisible = true
+                    val source = ImageDecoder.createSource(resources, imageRes)
+                    val drawable = ImageDecoder.decodeDrawable(source)
+                    ivLoading.setImageDrawable(drawable)
+                    (drawable as? AnimatedImageDrawable)?.start()
+                } else {
+                    clLoading.isVisible = true
+                    lavLoading.isVisible = true
+                    ivLoading.isVisible = false
+                }
+            } else {
+                clLoading.isVisible = false
+                lavLoading.isVisible = false
+                ivLoading.isVisible = false
+            }
+        }
+    }
+
     private fun showToast(message: String, duration: Int) {
         currentToast?.cancel()
         currentToast = Toast.makeText(context, message, duration)
@@ -124,20 +160,15 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     private fun showSnackBar(message: String, duration: Int) {
         currentSnackBar?.dismiss()
-        currentSnackBar =
-            Snackbar.make(binding.root, message, duration)
-                .setBackgroundTint(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.primary_dark_material_dark
-                    )
-                )
-                .setTextColor(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.primary_dark_material_light
-                    )
-                )
+        currentSnackBar = Snackbar.make(binding.root, message, duration).setBackgroundTint(
+            ContextCompat.getColor(
+                requireContext(), R.color.primary_dark_material_dark
+            )
+        ).setTextColor(
+            ContextCompat.getColor(
+                requireContext(), R.color.primary_dark_material_light
+            )
+        )
         currentSnackBar?.show()
     }
 

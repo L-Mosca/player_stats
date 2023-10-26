@@ -13,6 +13,8 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
     private val _navGraphId = MutableLiveData<Int>()
     val navGraphId: LiveData<Int> get() = _navGraphId
 
+    val showNavBottom: LiveData<Boolean> get() = _showNavBottom
+    private val _showNavBottom = MutableLiveData<Boolean>()
 
     fun showHomeScreen() {
         _navGraphId.value = R.id.home_nav_graph
@@ -26,5 +28,7 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
         _navGraphId.value = R.id.stats_nav_graph
     }
 
-
+    fun showNavBottom(showNavBottom: Boolean) {
+        _showNavBottom.postValue(showNavBottom)
+    }
 }
