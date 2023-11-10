@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/stats_nav_graph"
-    app:startDestination="@id/homeStatsFragment">
+    app:startDestination="@id/statsFragment">
 
     <fragment
         android:id="@+id/statsFragment"
@@ -14,15 +14,7 @@
             android:id="@+id/action_statsFragment_to_summonerDetailFragment"
             app:destination="@id/summonerDetailFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/homeStatsFragment"
-        android:name="br.com.lol_app.screen.stats.home.HomeStatsFragment"
-        android:label="HomeStatsFragment"
-        tools:layout="@layout/fragment_home_stats">
-        <action
-            android:id="@+id/action_homeStatsFragment_to_findSummonerFragment"
-            app:destination="@id/statsFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/summonerDetailFragment"
         android:name="br.com.lol_app.screen.stats.summonerdetail.SummonerDetailFragment"

@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import br.com.lol_app.R
 import br.com.lol_app.base.BaseFragment
 import br.com.lol_app.databinding.FragmentFindSummonerBinding
@@ -26,9 +25,6 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
         setupEditText()
         setupRecycler()
         setupRecentSummonerAnimation()
-        binding.ivBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
     }
 
     override fun initObservers() {
@@ -51,9 +47,11 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
         }
 
         viewModel.summonerResponse.observe(viewLifecycleOwner) { summonerResponse ->
-            val direction =
-                FindSummonerFragmentDirections.actionStatsFragmentToSummonerDetailFragment()
-            navigate(direction)
+            if (summonerResponse != null) {
+                val direction =
+                    FindSummonerFragmentDirections.actionStatsFragmentToSummonerDetailFragment()
+                navigate(direction)
+            }
         }
 
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
@@ -124,5 +122,10 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
                 viewModel.setListAnimation(rvRecentSearch.isVisible, requireContext())
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.resetSummonerValue()
     }
 }

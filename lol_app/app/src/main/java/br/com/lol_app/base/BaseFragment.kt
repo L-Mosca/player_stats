@@ -4,6 +4,7 @@ import android.graphics.ImageDecoder
 import android.graphics.drawable.AnimatedImageDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -126,7 +127,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     ) {
         with(loadingView) {
             if (isLoading) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
                     clLoading.isVisible = true
                     val imageRes =
                         if (loadingType == LoadingType.SECONDARY_LOADING)

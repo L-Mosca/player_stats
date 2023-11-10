@@ -19,8 +19,8 @@ import javax.inject.Inject
 class FindSummonerViewModel @Inject constructor(private val summonerRepository: SummonerRepositoryContract) :
     BaseViewModel() {
 
-    val summonerResponse: LiveData<SummonerResponse> get() = _summonerResponse
-    private val _summonerResponse = MutableLiveData<SummonerResponse>()
+    val summonerResponse: LiveData<SummonerResponse?> get() = _summonerResponse
+    private val _summonerResponse = MutableLiveData<SummonerResponse?>()
 
     val summonerNotFound: LiveData<Boolean> get() = _summonerNotFound
     private val _summonerNotFound = MutableLiveData<Boolean>()
@@ -63,8 +63,9 @@ class FindSummonerViewModel @Inject constructor(private val summonerRepository: 
             val iconAnimation = AnimationUtils.loadAnimation(context, R.anim.rotate_down_to_up)
             _slideDownAnimation.postValue(Pair(listAnimation, iconAnimation))
         }
-
-
     }
+
+    fun resetSummonerValue() = _summonerResponse.postValue(null)
+
 
 }
