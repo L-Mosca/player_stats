@@ -34,15 +34,25 @@ class MainActivity : AppCompatActivity() {
 
         navController = navHostFragment.navController
 
-        binding.navBottom.add(MeowBottomNavigation.Model(1, R.drawable.ic_home))
-        binding.navBottom.add(MeowBottomNavigation.Model(2, R.drawable.ic_stats))
-        binding.navBottom.add(MeowBottomNavigation.Model(3, R.drawable.ic_settings))
+        binding.navBottom.setOnItemSelectedListener { menuItem ->
 
-        binding.navBottom.setOnClickMenuListener {
-            when (it.id) {
-                1 -> navController.navigate(R.id.home_nav_graph)
-                2 -> navController.navigate(R.id.stats_nav_graph)
-                3 -> navController.navigate(R.id.settings_nav_graph)
+            when (menuItem.itemId) {
+                R.id.menuHome -> {
+                    navController.navigate(R.id.home_nav_graph)
+                    true
+                }
+
+                R.id.menuStats -> {
+                    navController.navigate(R.id.stats_nav_graph)
+                    true
+                }
+
+                R.id.menuSettings -> {
+                    navController.navigate(R.id.settings_nav_graph)
+                    true
+                }
+
+                else -> false
             }
         }
     }
@@ -50,6 +60,7 @@ class MainActivity : AppCompatActivity() {
     private fun onInitObservers() {
         mainViewModel.navGraphId.observe(this) { navGraphResource ->
             navController.navigate(navGraphResource)
+            binding.navBottom.selectedItemId = mainViewModel.getDestinationItemId()
         }
 
         mainViewModel.showNavBottom.observe(this) {

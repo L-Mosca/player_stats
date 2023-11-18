@@ -3,15 +3,19 @@ package br.com.lol_app.screen.stats.findsummoner
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import br.com.lol_app.R
 import br.com.lol_app.base.BaseFragment
 import br.com.lol_app.databinding.FragmentFindSummonerBinding
 import br.com.lol_app.domain.model.summoner.SummonerResponse
+import br.com.lol_app.screen.host.MainViewModel
 import br.com.lol_app.screen.stats.findsummoner.adapter.RecentSummonerAdapter
 import br.com.lol_app.utils.LoadingType
 import br.com.lol_app.utils.hideKeyboard
 import br.com.lol_app.utils.navigate
+import br.com.lol_app.utils.onBackPressed
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,9 +23,11 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
     override val bindingInflater: (LayoutInflater) -> FragmentFindSummonerBinding =
         FragmentFindSummonerBinding::inflate
     override val viewModel: FindSummonerViewModel by viewModels()
+    private val mainSharedViewModel: MainViewModel by activityViewModels()
     private val adapter = RecentSummonerAdapter()
 
     override fun initViews() {
+        setupBackPressed()
         setupEditText()
         setupRecycler()
         setupRecentSummonerAnimation()
@@ -121,6 +127,13 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
             ivToggleView.setOnClickListener {
                 viewModel.setListAnimation(rvRecentSearch.isVisible, requireContext())
             }
+        }
+    }
+
+    private fun setupBackPressed() {
+        onBackPressed {
+            findNavController().popBackStack(R.id.home_nav_graph, false)
+            mainSharedViewModel.showHomeScreen()
         }
     }
 

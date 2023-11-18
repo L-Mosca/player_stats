@@ -31,4 +31,13 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
     fun showNavBottom(showNavBottom: Boolean) {
         _showNavBottom.postValue(showNavBottom)
     }
+
+    fun getDestinationItemId(): Int {
+        return when (_navGraphId.value) {
+            R.id.home_nav_graph -> R.id.menuHome
+            R.id.stats_nav_graph -> R.id.menuStats
+            R.id.settings_nav_graph -> R.id.menuSettings
+            else -> R.id.menuHome
+        }
+    }
 }

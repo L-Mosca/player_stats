@@ -16,7 +16,20 @@
         app:navGraph="@navigation/main_nav_graph"
         tools:context=".screen.host.MainActivity" />
 
-    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/navBottom"
+        app:backgroundTint="@color/blue_700"
+        app:itemHorizontalTranslationEnabled="true"
+        app:itemIconTint="@drawable/bottom_nav_icon_color"
+        app:itemTextColor="@drawable/bottom_nav_icon_color"
+        app:itemRippleColor="@color/gold_500"
+        app:menu="@menu/bottom_navigation_menu"
+        />
+
+    <!--<com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/navBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +41,7 @@
         app:mbn_defaultIconColor="@color/gold_500"
         app:mbn_rippleColor="@color/white"
         app:mbn_selectedIconColor="@color/gold_400"
-        app:mbn_shadowColor="@color/gold_500" />
+        app:mbn_shadowColor="@color/gold_500" />-->
 
 </RelativeLayout>
 

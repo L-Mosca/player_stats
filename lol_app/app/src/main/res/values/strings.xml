@@ -5,4 +5,7 @@
     <string name="summoner_not_found">Nenhum invocador encontrado</string>
     <string name="search_summoner_name">Busque um invocador</string>
     <string name="recent_search">Pesquisas recentes</string>
+    <string name="home">Home</string>
+    <string name="stats">Status</string>
+    <string name="settings">Config.</string>
 </resources>

@@ -8,6 +8,7 @@
         <item name="materialCardViewStyle">@style/Base.MaterialCard</item>
         <item name="buttonStyle">@style/Base.ButtonStyle</item>
         <item name="textInputStyle">@style/Base.TextInputLayout</item>
+        <item name="bottomNavigationStyle">@style/Base.BottomNavigation</item>
     </style>
 
     <style name="Theme.Lol_app" parent="Base.Theme.Lol_app" />
@@ -41,8 +42,19 @@
         <item name="boxStrokeWidth">1dp</item>
     </style>
 
+    <style name="Base.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@style/Base.ActiveIndicator</item>
+    </style>
+
     <style name="roundedImageViewRounded">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Base.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="shapeAppearance">
+            @style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator
+        </item>
+        <item name="android:color">@android:color/transparent</item>
     </style>
 </resources>

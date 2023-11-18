@@ -5,12 +5,14 @@ import android.content.Context
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import br.com.lol_app.R
 import com.airbnb.lottie.LottieAnimationView
@@ -138,4 +140,15 @@ fun Fragment.hasDevicePassword(): Boolean {
     val keyguardManager =
         requireContext().getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
     return keyguardManager.isKeyguardSecure
+}
+
+fun Fragment.onBackPressed(action: () -> Unit) {
+    val callback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            action()
+        }
+    }
+
+    callback.isEnabled
+    activity?.onBackPressedDispatcher?.addCallback(this, callback)
 }
