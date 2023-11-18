@@ -1,6 +1,7 @@
 package br.com.lol_app.domain.services.api
 
 import br.com.lol_app.BuildConfig
+import br.com.lol_app.domain.model.champions.FreeChampionsResponse
 import br.com.lol_app.domain.model.summoner.SummonerResponse
 import br.com.lol_app.domain.services.preferences.PreferencesHelperContract
 import com.facebook.stetho.okhttp3.StethoInterceptor
@@ -62,4 +63,7 @@ interface DbApi {
 
     @GET(ApiConstants.SUMMONER_BY_NAME)
     suspend fun fetchSummonerByName(@Path("name") name: String): SummonerResponse?
+
+    @GET(ApiConstants.FREE_CHAMPIONS_ROTATION)
+    suspend fun fetchFreeChampionsRotation(): FreeChampionsResponse?
 }
