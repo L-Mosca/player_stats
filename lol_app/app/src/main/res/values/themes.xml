@@ -9,6 +9,7 @@
         <item name="buttonStyle">@style/Base.ButtonStyle</item>
         <item name="textInputStyle">@style/Base.TextInputLayout</item>
         <item name="bottomNavigationStyle">@style/Base.BottomNavigation</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="Theme.Lol_app" parent="Base.Theme.Lol_app" />
