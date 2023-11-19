@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/gradient_blue"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivSummonerImage"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_teemo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/gradient_shadow"
+        app:layout_constraintBottom_toBottomOf="@id/ivSummonerImage"
+        app:layout_constraintEnd_toEndOf="@id/ivSummonerImage"
+        app:layout_constraintStart_toStartOf="@id/ivSummonerImage"
+        app:layout_constraintTop_toTopOf="@id/ivSummonerImage" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/gold_100"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/ivSummonerImage"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Summoner Name" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvLevel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/gold_100"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="@id/ivSummonerImage"
+        app:layout_constraintStart_toEndOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="@id/tvName"
+        tools:text=" - 300" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

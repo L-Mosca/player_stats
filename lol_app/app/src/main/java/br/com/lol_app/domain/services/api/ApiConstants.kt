@@ -8,5 +8,6 @@ class ApiConstants {
 
         // --- Champions URL ---
         const val FREE_CHAMPIONS_ROTATION = "/lol/platform/v3/champion-rotations"
+        const val CHAMPIONS_MASTERIES_BY_SUMMONER_ID = "/lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedSummonerId}"
     }
 }

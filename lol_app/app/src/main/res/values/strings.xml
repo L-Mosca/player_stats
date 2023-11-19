@@ -1,11 +1,21 @@
 <resources>
     <string name="app_name">lol_app</string>
+
+
+    <!-- Bottom Nav Menu -->
+    <string name="home">Home</string>
+    <string name="stats">Status</string>
+    <string name="settings">Config.</string>
+
+    <!-- Find Summoner -->
     <string name="search_summoner">Buscar Invocador</string>
     <string name="summoner_name">Nome do invocador</string>
     <string name="summoner_not_found">Nenhum invocador encontrado</string>
     <string name="search_summoner_name">Busque um invocador</string>
     <string name="recent_search">Pesquisas recentes</string>
-    <string name="home">Home</string>
-    <string name="stats">Status</string>
-    <string name="settings">Config.</string>
+
+
+    <!-- Summoner Detail -->
+    <string name="summoner_level">- %d</string>
+    <string name="masteries">Maestrias (top 5)</string>
 </resources>

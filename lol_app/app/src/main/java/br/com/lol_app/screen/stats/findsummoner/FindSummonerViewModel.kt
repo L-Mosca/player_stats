@@ -42,7 +42,11 @@ class FindSummonerViewModel @Inject constructor(private val summonerRepository: 
                     _summonerNotFound.postValue(true)
                 }
             })) {
-                _summonerResponse.postValue(summonerRepository.fetchSummonerByName(summonerName))
+                val response = summonerRepository.fetchSummonerByName(summonerName)
+                if (response != null)
+                    _summonerResponse.postValue(response)
+                else
+                    _summonerNotFound.postValue(true)
             }
         }
     }

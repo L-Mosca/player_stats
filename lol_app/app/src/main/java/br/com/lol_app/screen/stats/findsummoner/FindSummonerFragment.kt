@@ -55,7 +55,9 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
         viewModel.summonerResponse.observe(viewLifecycleOwner) { summonerResponse ->
             if (summonerResponse != null) {
                 val direction =
-                    FindSummonerFragmentDirections.actionStatsFragmentToSummonerDetailFragment()
+                    FindSummonerFragmentDirections.actionStatsFragmentToSummonerDetailFragment(
+                        summonerData = summonerResponse
+                    )
                 navigate(direction)
             }
         }
