@@ -17,17 +17,17 @@
         tools:context=".screen.host.MainActivity" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navBottom"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:id="@+id/navBottom"
         app:backgroundTint="@color/blue_700"
         app:itemHorizontalTranslationEnabled="true"
         app:itemIconTint="@drawable/bottom_nav_icon_color"
-        app:itemTextColor="@drawable/bottom_nav_icon_color"
         app:itemRippleColor="@color/gold_500"
-        app:menu="@menu/bottom_navigation_menu"
-        />
+        app:itemTextColor="@drawable/bottom_nav_icon_color"
+        app:menu="@menu/bottom_navigation_menu" />
 
     <!--<com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/navBottom"

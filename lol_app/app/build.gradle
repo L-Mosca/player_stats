@@ -21,7 +21,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "APP_NAME", "\"LoL App/\"")
+        buildConfigField("String", "APP_NAME", "\"Player Stats/\"")
         buildConfigField("String", "API_URL", "\"https://br1.api.riotgames.com\"")
         buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
     }
@@ -42,19 +42,19 @@ android {
     productFlavors {
         develop {
             applicationIdSuffix '.dev'
-            resValue "string", "app_name", "[Dev] LoL App"
+            resValue "string", "app_name", "[Beta] Player Stats"
             dimension 'environment'
 
-            buildConfigField("String", "APP_NAME", "\"LoL App Develop/\"")
+            buildConfigField("String", "APP_NAME", "\"[Beta] Player Stats/\"")
             buildConfigField("String", "API_URL", "\"https://br1.api.riotgames.com\"")
             buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
 
         }
         prod {
-            resValue "string", "app_name", "LoL App"
+            resValue "string", "app_name", "Player Stats"
             dimension 'environment'
 
-            buildConfigField("String", "APP_NAME", "\"LoL App/\"")
+            buildConfigField("String", "APP_NAME", "\"Player Stats/\"")
             buildConfigField("String", "API_URL", "\"https://br1.api.riotgames.com\"")
             buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
         }
