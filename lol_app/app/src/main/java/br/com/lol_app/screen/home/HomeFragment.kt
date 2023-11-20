@@ -20,7 +20,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initViews() {
         setupBackPressed()
         mainSharedViewModel.showNavBottom(true)
-        viewModel.fetchFreeChampionsRotation()
+        viewModel.fetchFreeChampionsRotation(requireContext())
     }
 
     override fun initObservers() {

@@ -39,8 +39,9 @@ class MasteriesChampionsAdapter :
     ) {
         holder.binding.apply {
             cvChampionMastery.setOnClickListener { onChampionClicked?.invoke(data) }
-            tvChampionName.text = data.championId.getChampionNameById()
-            tvChampionDescription.text = data.championId.getChampionDescriptionById()
+            tvChampionName.text = root.context.getString(data.championId.getChampionNameById())
+            tvChampionDescription.text =
+                root.context.getString(data.championId.getChampionDescriptionById())
         }
     }
 

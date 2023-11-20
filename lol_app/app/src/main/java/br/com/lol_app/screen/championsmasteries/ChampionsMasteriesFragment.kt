@@ -1,12 +1,16 @@
 package br.com.lol_app.screen.championsmasteries
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import br.com.lol_app.R
 import br.com.lol_app.databinding.FragmentChampionsMasteriesBinding
 import br.com.lol_app.domain.model.summoner.SummonerResponse
 import br.com.lol_app.screen.summonerdetail.adapter.MasteriesChampionsAdapter
@@ -49,9 +53,35 @@ class ChampionsMasteriesFragment : Fragment() {
     private fun initViews() {
         val data = arguments?.getParcelable<SummonerResponse>(SUMMONER_DATA_EXTRA)
         viewModel.fetchChampionsMasteries(data?.id!!)
+
+        binding.ivToggleViewChampionsMasteries.setOnClickListener {
+            viewModel.setListAnimation(binding.rvChampionsMasteries.isVisible, requireContext())
+        }
     }
 
     private fun initObservers() {
+        viewModel.slideUpAnimation.observe(viewLifecycleOwner) { animation ->
+            with(binding) {
+                ivToggleViewChampionsMasteries.startAnimation(animation.second)
+                rvChampionsMasteries.startAnimation(animation.first)
+                ivToggleViewChampionsMasteries.setImageResource(R.drawable.ic_up)
+                rvChampionsMasteries.visibility = View.INVISIBLE
+                Handler(Looper.getMainLooper()).postDelayed({
+                    rvChampionsMasteries.visibility = View.GONE
+                }, 250)
+
+            }
+        }
+
+        viewModel.slideDownAnimation.observe(viewLifecycleOwner) { animation ->
+            with(binding) {
+                ivToggleViewChampionsMasteries.startAnimation(animation.second)
+                rvChampionsMasteries.startAnimation(animation.first)
+                ivToggleViewChampionsMasteries.setImageResource(R.drawable.ic_down)
+                rvChampionsMasteries.visibility = View.VISIBLE
+            }
+        }
+
         viewModel.championsMasteries.observe(viewLifecycleOwner) { championList ->
             binding.apply {
                 adapter.dataList = championList!!.subList(0, 5)

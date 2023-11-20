@@ -1,9 +1,9 @@
 package br.com.lol_app.screen.home
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.com.lol_app.base.BaseViewModel
-import br.com.lol_app.domain.model.champions.FreeChampionsResponse
 import br.com.lol_app.domain.repositories.champion.ChampionRepositoryContract
 import br.com.lol_app.utils.getChampionNameById
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,11 +19,15 @@ class HomeViewModel @Inject constructor(private val championRepository: Champion
     private val _freeChampionsForNewPlayers = MutableLiveData<List<String>>()
     val freeChampionsForNewPlayers: LiveData<List<String>> get() = _freeChampionsForNewPlayers
 
-    fun fetchFreeChampionsRotation() {
+    fun fetchFreeChampionsRotation(context: Context) {
         defaultLaunch {
             val freeChampionsIds = championRepository.fetchFreeChampionsRotation()
-            _freeChampionList.postValue(freeChampionsIds?.championIds.getChampionNameById())
-            _freeChampionsForNewPlayers.postValue(freeChampionsIds?.championIdsForNewPlayers.getChampionNameById())
+            _freeChampionList.postValue(freeChampionsIds?.championIds.getChampionNameById(context))
+            _freeChampionsForNewPlayers.postValue(
+                freeChampionsIds?.championIdsForNewPlayers.getChampionNameById(
+                    context
+                )
+            )
         }
     }
 
