@@ -22,15 +22,24 @@
                 android:id="@+id/includeSummonerBaseData"
                 layout="@layout/include_summoner_base_data" />
 
-            <include
-                android:id="@+id/includeChampionsMastery"
-                layout="@layout/include_champions_mastery"
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fcvChampionsMasteries"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/includeSummonerBaseData" />
+
+            <!-- <include
+                 android:id="@+id/includeChampionsMastery"
+                 layout="@layout/include_champions_mastery"
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="20dp"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintTop_toBottomOf="@id/includeSummonerBaseData" />-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

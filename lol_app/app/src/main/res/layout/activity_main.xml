@@ -18,10 +18,10 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navBottom"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:visibility="gone"
         app:backgroundTint="@color/blue_700"
         app:itemHorizontalTranslationEnabled="true"
         app:itemIconTint="@drawable/bottom_nav_icon_color"

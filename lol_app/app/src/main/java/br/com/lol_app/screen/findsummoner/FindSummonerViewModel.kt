@@ -1,4 +1,4 @@
-package br.com.lol_app.screen.stats.findsummoner
+package br.com.lol_app.screen.findsummoner
 
 import android.content.Context
 import android.view.animation.Animation

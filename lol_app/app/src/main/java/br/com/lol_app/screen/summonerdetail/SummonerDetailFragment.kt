@@ -1,15 +1,13 @@
-package br.com.lol_app.screen.stats.summonerdetail
+package br.com.lol_app.screen.summonerdetail
 
 import android.view.LayoutInflater
-import android.widget.Toast
+import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import br.com.lol_app.R
 import br.com.lol_app.base.BaseFragment
 import br.com.lol_app.databinding.FragmentSummonerDetailBinding
-import br.com.lol_app.domain.model.champions.ChampionBaseData
-import br.com.lol_app.screen.stats.summonerdetail.adapter.MasteriesChampionsAdapter
-import br.com.lol_app.utils.getChampionNameById
+import br.com.lol_app.screen.championsmasteries.ChampionsMasteriesFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,12 +15,11 @@ class SummonerDetailFragment : BaseFragment<FragmentSummonerDetailBinding>() {
     override val bindingInflater: (LayoutInflater) -> FragmentSummonerDetailBinding =
         FragmentSummonerDetailBinding::inflate
     override val viewModel: SummonerDetailViewModel by viewModels()
-
     private val navArgs: SummonerDetailFragmentArgs by navArgs()
-    private val adapter = MasteriesChampionsAdapter()
 
     override fun initViews() {
         viewModel.fetchSummonerStats(navArgs.summonerData)
+        setupChampionsMasteries()
     }
 
     override fun initObservers() {
@@ -34,24 +31,14 @@ class SummonerDetailFragment : BaseFragment<FragmentSummonerDetailBinding>() {
                 }
             }
         }
-
-        viewModel.championsMasteries.observe(viewLifecycleOwner) { championList ->
-            setupRecycler(championList!!)
-        }
     }
 
-    private fun setupRecycler(championList: List<ChampionBaseData>) {
-        binding.includeChampionsMastery.apply {
-            adapter.dataList = championList.subList(0, 4)
-            rvChampionsMasteries.adapter = adapter
+    private fun setupChampionsMasteries() {
+        val fragment = ChampionsMasteriesFragment.newInstance(navArgs.summonerData)
+
+        childFragmentManager.commit {
+            replace(R.id.fcvChampionsMasteries, fragment)
         }
 
-        adapter.onChampionClicked = { championData ->
-            Toast.makeText(
-                requireContext(),
-                championData.championId.getChampionNameById(),
-                Toast.LENGTH_LONG
-            ).show()
-        }
     }
 }

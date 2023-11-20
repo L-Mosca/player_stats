@@ -1,4 +1,4 @@
-package br.com.lol_app.screen.stats.summonerdetail.adapter
+package br.com.lol_app.screen.summonerdetail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +8,7 @@ import br.com.lol_app.base.BaseAdapter
 import br.com.lol_app.base.ViewHolder
 import br.com.lol_app.databinding.AdapterChampionsMasteriesBinding
 import br.com.lol_app.domain.model.champions.ChampionBaseData
+import br.com.lol_app.utils.getChampionDescriptionById
 import br.com.lol_app.utils.getChampionNameById
 import br.com.lol_app.utils.toDpMetric
 
@@ -39,7 +40,7 @@ class MasteriesChampionsAdapter :
         holder.binding.apply {
             cvChampionMastery.setOnClickListener { onChampionClicked?.invoke(data) }
             tvChampionName.text = data.championId.getChampionNameById()
-            tvChampionDescription.text = data.championId.getChampionNameById()
+            tvChampionDescription.text = data.championId.getChampionDescriptionById()
         }
     }
 
@@ -66,7 +67,6 @@ class MasteriesChampionsAdapter :
                 marginEnd = 20.toDpMetric(parent)
             }
         }
-
         return ViewHolder(binding)
     }
 
