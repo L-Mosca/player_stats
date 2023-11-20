@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/statsFragment"
-        android:name="br.com.lol_app.screen.stats.findsummoner.FindSummonerFragment"
+        android:name="br.com.lol_app.screen.findsummoner.FindSummonerFragment"
         android:label="StatsFragment"
         tools:layout="@layout/fragment_find_summoner">
         <action
@@ -17,7 +17,12 @@
 
     <fragment
         android:id="@+id/summonerDetailFragment"
-        android:name="br.com.lol_app.screen.stats.summonerdetail.SummonerDetailFragment"
+        android:name="br.com.lol_app.screen.summonerdetail.SummonerDetailFragment"
         android:label="SummonerDetailFragment"
-        tools:layout="@layout/fragment_summoner_detail" />
+        tools:layout="@layout/fragment_summoner_detail">
+        <argument
+            android:name="summonerData"
+            app:argType="br.com.lol_app.domain.model.summoner.SummonerResponse" />
+
+    </fragment>
 </navigation>

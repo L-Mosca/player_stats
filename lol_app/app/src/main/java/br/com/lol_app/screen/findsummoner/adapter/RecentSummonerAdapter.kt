@@ -1,4 +1,4 @@
-package br.com.lol_app.screen.stats.findsummoner.adapter
+package br.com.lol_app.screen.findsummoner.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

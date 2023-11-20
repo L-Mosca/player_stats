@@ -194,3 +194,22 @@ fun List<Int>?.getChampionNameById(): List<String> {
 
     return championList
 }
+
+
+fun Int?.getChampionDescriptionById(): String {
+    return when (this) {
+        41 -> "O terror dos mares"
+        else -> "Fodase"
+    }
+}
+
+fun List<Int>?.getChampionDescriptionById(): List<String> {
+    val descriptionList = mutableListOf<String>()
+
+    this?.forEach { championId ->
+        descriptionList.add(championId.getChampionDescriptionById())
+    }
+
+    return descriptionList
+
+}

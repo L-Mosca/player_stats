@@ -1,4 +1,4 @@
-package br.com.lol_app.screen.stats.findsummoner
+package br.com.lol_app.screen.findsummoner
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ import br.com.lol_app.base.BaseFragment
 import br.com.lol_app.databinding.FragmentFindSummonerBinding
 import br.com.lol_app.domain.model.summoner.SummonerResponse
 import br.com.lol_app.screen.host.MainViewModel
-import br.com.lol_app.screen.stats.findsummoner.adapter.RecentSummonerAdapter
+import br.com.lol_app.screen.findsummoner.adapter.RecentSummonerAdapter
 import br.com.lol_app.utils.LoadingType
 import br.com.lol_app.utils.hideKeyboard
 import br.com.lol_app.utils.navigate
@@ -55,7 +55,9 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
         viewModel.summonerResponse.observe(viewLifecycleOwner) { summonerResponse ->
             if (summonerResponse != null) {
                 val direction =
-                    FindSummonerFragmentDirections.actionStatsFragmentToSummonerDetailFragment()
+                    FindSummonerFragmentDirections.actionStatsFragmentToSummonerDetailFragment(
+                        summonerData = summonerResponse
+                    )
                 navigate(direction)
             }
         }
