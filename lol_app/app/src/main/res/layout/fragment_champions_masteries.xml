@@ -4,22 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="20dp"
-    android:background="@drawable/gradient_blue">
+    android:background="@drawable/gradient_blue"
+    android:paddingBottom="20dp">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvMasteries"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/masteries"
-        android:layout_marginTop="4dp"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ivToggleViewChampionsMasteries"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivToggleViewChampionsMasteries"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_down"
+        app:layout_constraintBottom_toBottomOf="@id/tvMasteries"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvMasteries"
+        app:tint="@color/gold_400" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChampionsMasteries"
