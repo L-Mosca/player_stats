@@ -5,19 +5,19 @@ import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.lol_app.R
+import br.com.lol_app.base.BaseFragment
 import br.com.lol_app.databinding.FragmentChampionsMasteriesBinding
 import br.com.lol_app.domain.model.summoner.SummonerResponse
 import br.com.lol_app.screen.championsmasteries.adapter.MasteriesChampionsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @Suppress("DEPRECATION")
 @AndroidEntryPoint
-class ChampionsMasteriesFragment : Fragment() {
+class ChampionsMasteriesFragment : BaseFragment<FragmentChampionsMasteriesBinding>() {
 
     companion object {
         private const val SUMMONER_DATA_EXTRA = "SummonerData.EXTRA"
@@ -29,39 +29,19 @@ class ChampionsMasteriesFragment : Fragment() {
         }
     }
 
-    lateinit var binding: FragmentChampionsMasteriesBinding
-    private val viewModel: ChampionsMasteriesViewModel by viewModels()
+    override val bindingInflater: (LayoutInflater) -> FragmentChampionsMasteriesBinding =
+        FragmentChampionsMasteriesBinding::inflate
+    override val viewModel: ChampionsMasteriesViewModel by viewModels()
     private val adapter = MasteriesChampionsAdapter()
     private var summonerData: SummonerResponse? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentChampionsMasteriesBinding.inflate(inflater)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initViews()
-        initObservers()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        summonerData = arguments?.getParcelable<SummonerResponse>(SUMMONER_DATA_EXTRA)
-        viewModel.fetchChampionsMasteries(summonerData?.id!!)
-    }
-
-    private fun initViews() {
+    override fun initViews() {
         binding.ivToggleViewChampionsMasteries.setOnClickListener {
             viewModel.setListAnimation(binding.rvChampionsMasteries.isVisible, requireContext())
         }
     }
 
-    private fun initObservers() {
+    override fun initObservers() {
         viewModel.slideUpAnimation.observe(viewLifecycleOwner) { animation ->
             with(binding) {
                 ivToggleViewChampionsMasteries.startAnimation(animation.second)
@@ -90,13 +70,19 @@ class ChampionsMasteriesFragment : Fragment() {
                 rvChampionsMasteries.adapter = adapter
             }
 
-            adapter.onChampionClicked = { _ ->
-                /*val directions =
-                    SummonerDetailFragmentDirections.actionSummonerDetailFragmentToChampionMasteryDetailFragment(
-                        summonerData = summonerData!!
-                    )
-                navigate(directions)*/
-            }
+//            adapter.onChampionClicked = { _ ->
+//                val directions =
+//                    SummonerDetailFragmentDirections.actionSummonerDetailFragmentToChampionMasteryDetailFragment(
+//                        summonerData = summonerData!!
+//                    )
+//                navigate(directions)
+//            }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        summonerData = arguments?.getParcelable(SUMMONER_DATA_EXTRA)
+        viewModel.fetchChampionsMasteries(summonerData?.id!!)
     }
 }

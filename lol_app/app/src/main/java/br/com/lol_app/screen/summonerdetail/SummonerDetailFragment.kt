@@ -10,6 +10,7 @@ import br.com.lol_app.R
 import br.com.lol_app.base.BaseFragment
 import br.com.lol_app.databinding.FragmentSummonerDetailBinding
 import br.com.lol_app.screen.championsmasteries.ChampionsMasteriesFragment
+import br.com.lol_app.screen.maintier.MainTierFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,15 +38,22 @@ class SummonerDetailFragment : BaseFragment<FragmentSummonerDetailBinding>() {
 
     private fun setupChampionsMasteries() {
         val fragment = ChampionsMasteriesFragment.newInstance(navArgs.summonerData)
-
         childFragmentManager.commit {
             replace(R.id.fcvChampionsMasteries, fragment)
         }
 
     }
 
+    private fun setupTierData() {
+        val fragment = MainTierFragment.newInstance(navArgs.summonerData.id.toString())
+        childFragmentManager.commit {
+            replace(R.id.fcvTier, fragment)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setupChampionsMasteries()
+        setupTierData()
         super.onCreate(savedInstanceState)
     }
 }
