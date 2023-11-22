@@ -4,6 +4,7 @@ import br.com.lol_app.BuildConfig
 import br.com.lol_app.domain.model.champions.ChampionBaseData
 import br.com.lol_app.domain.model.champions.FreeChampionsResponse
 import br.com.lol_app.domain.model.summoner.SummonerResponse
+import br.com.lol_app.domain.model.tier.SummonerMainTierResponse
 import br.com.lol_app.domain.services.preferences.PreferencesHelperContract
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
@@ -70,4 +71,14 @@ interface DbApi {
 
     @GET(ApiConstants.CHAMPIONS_MASTERIES_BY_SUMMONER_ID)
     suspend fun fetchChampionsMasteries(@Path("encryptedSummonerId") summonerId: String): List<ChampionBaseData>?
+
+    /**
+     * Fetch summoner main tier basic data
+     * @param summonerId use how path at *__ApiConstants.SUMMONER_MAIN_TIER__* string to get data in external API.
+     * @return Return SummonerMainTierResponse class with summoner main tier basic data - __/domain/model/tier/SummonerMainTierResponse__
+     * @see SummonerMainTierResponse
+     * @see ApiConstants.SUMMONER_MAIN_TIER
+     */
+    @GET(ApiConstants.SUMMONER_MAIN_TIER)
+    suspend fun fetchSummonerMainTier(@Path("encryptedSummonerId") summonerId: String): SummonerMainTierResponse?
 }
