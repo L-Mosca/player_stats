@@ -17,7 +17,8 @@
 
     <!-- Summoner Detail -->
     <string name="summoner_level">- %d</string>
-    <string name="masteries">Maestrias (top 5)</string>
+    <string name="masteries">Maiores Maestrias</string>
+    <string name="see_all"><u>Ver todos</u></string>
 
     <!--Champions names -->
     <string name="annie">Annie</string>
@@ -354,5 +355,8 @@
     <string name="milio_description">A Chama Gentil</string>
     <string name="naafiri_description">Fera Das Cem Mordidas</string>
     <string name="invalid_champion_id_description"> </string>
+
+
+
 
 </resources>

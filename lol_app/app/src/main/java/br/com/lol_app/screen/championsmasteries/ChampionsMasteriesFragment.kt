@@ -6,15 +6,13 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.lol_app.R
 import br.com.lol_app.databinding.FragmentChampionsMasteriesBinding
 import br.com.lol_app.domain.model.summoner.SummonerResponse
-import br.com.lol_app.screen.summonerdetail.adapter.MasteriesChampionsAdapter
-import br.com.lol_app.utils.getChampionNameById
+import br.com.lol_app.screen.championsmasteries.adapter.MasteriesChampionsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @Suppress("DEPRECATION")
@@ -34,6 +32,7 @@ class ChampionsMasteriesFragment : Fragment() {
     lateinit var binding: FragmentChampionsMasteriesBinding
     private val viewModel: ChampionsMasteriesViewModel by viewModels()
     private val adapter = MasteriesChampionsAdapter()
+    private var summonerData: SummonerResponse? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,10 +49,13 @@ class ChampionsMasteriesFragment : Fragment() {
         initObservers()
     }
 
-    private fun initViews() {
-        val data = arguments?.getParcelable<SummonerResponse>(SUMMONER_DATA_EXTRA)
-        viewModel.fetchChampionsMasteries(data?.id!!)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        summonerData = arguments?.getParcelable<SummonerResponse>(SUMMONER_DATA_EXTRA)
+        viewModel.fetchChampionsMasteries(summonerData?.id!!)
+    }
 
+    private fun initViews() {
         binding.ivToggleViewChampionsMasteries.setOnClickListener {
             viewModel.setListAnimation(binding.rvChampionsMasteries.isVisible, requireContext())
         }
@@ -88,12 +90,12 @@ class ChampionsMasteriesFragment : Fragment() {
                 rvChampionsMasteries.adapter = adapter
             }
 
-            adapter.onChampionClicked = { championData ->
-                Toast.makeText(
-                    requireContext(),
-                    championData.championId.getChampionNameById(),
-                    Toast.LENGTH_LONG
-                ).show()
+            adapter.onChampionClicked = { _ ->
+                /*val directions =
+                    SummonerDetailFragmentDirections.actionSummonerDetailFragmentToChampionMasteryDetailFragment(
+                        summonerData = summonerData!!
+                    )
+                navigate(directions)*/
             }
         }
     }

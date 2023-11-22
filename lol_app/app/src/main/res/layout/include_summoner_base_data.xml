@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/gradient_blue"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/gradient_blue">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivSummonerImage"
@@ -50,5 +50,25 @@
         app:layout_constraintStart_toEndOf="@id/tvName"
         app:layout_constraintTop_toTopOf="@id/tvName"
         tools:text=" - 300" />
+
+    <View
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="2dp"
+        android:background="@drawable/ic_back_gradient"
+        app:layout_constraintBottom_toBottomOf="@id/ivBackSummonerDetail"
+        app:layout_constraintEnd_toEndOf="@id/ivBackSummonerDetail"
+        app:layout_constraintStart_toStartOf="@id/ivBackSummonerDetail"
+        app:layout_constraintTop_toTopOf="@id/ivBackSummonerDetail" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivBackSummonerDetail"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

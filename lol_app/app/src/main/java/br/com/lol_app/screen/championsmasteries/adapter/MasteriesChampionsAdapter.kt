@@ -1,7 +1,8 @@
-package br.com.lol_app.screen.summonerdetail.adapter
+package br.com.lol_app.screen.championsmasteries.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import br.com.lol_app.base.BaseAdapter
@@ -9,6 +10,7 @@ import br.com.lol_app.base.ViewHolder
 import br.com.lol_app.databinding.AdapterChampionsMasteriesBinding
 import br.com.lol_app.domain.model.champions.ChampionBaseData
 import br.com.lol_app.utils.getChampionDescriptionById
+import br.com.lol_app.utils.getChampionMasteryLevel
 import br.com.lol_app.utils.getChampionNameById
 import br.com.lol_app.utils.toDpMetric
 
@@ -42,6 +44,8 @@ class MasteriesChampionsAdapter :
             tvChampionName.text = root.context.getString(data.championId.getChampionNameById())
             tvChampionDescription.text =
                 root.context.getString(data.championId.getChampionDescriptionById())
+            ivChest.isVisible = data.chestGranted ?: false
+            data.championLevel?.let { ivMastery.setBackgroundResource(it.getChampionMasteryLevel()) }
         }
     }
 

@@ -379,3 +379,13 @@ fun List<Int>?.getChampionDescriptionById(context: Context): List<String> {
     return descriptionList
 
 }
+
+fun Int.getChampionMasteryLevel(): Int {
+    return when (this) {
+        4 -> R.drawable.img_mastery_4
+        5 -> R.drawable.img_mastery_5
+        6 -> R.drawable.img_mastery_6
+        7 -> R.drawable.img_mastery_7
+        else -> 0
+    }
+}
