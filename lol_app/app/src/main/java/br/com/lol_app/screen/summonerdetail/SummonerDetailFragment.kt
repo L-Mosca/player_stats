@@ -1,8 +1,10 @@
 package br.com.lol_app.screen.summonerdetail
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.lol_app.R
 import br.com.lol_app.base.BaseFragment
@@ -18,8 +20,8 @@ class SummonerDetailFragment : BaseFragment<FragmentSummonerDetailBinding>() {
     private val navArgs: SummonerDetailFragmentArgs by navArgs()
 
     override fun initViews() {
+        binding.includeSummonerBaseData.ivBackSummonerDetail.setOnClickListener { findNavController().popBackStack() }
         viewModel.fetchSummonerStats(navArgs.summonerData)
-        setupChampionsMasteries()
     }
 
     override fun initObservers() {
@@ -40,5 +42,10 @@ class SummonerDetailFragment : BaseFragment<FragmentSummonerDetailBinding>() {
             replace(R.id.fcvChampionsMasteries, fragment)
         }
 
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setupChampionsMasteries()
+        super.onCreate(savedInstanceState)
     }
 }

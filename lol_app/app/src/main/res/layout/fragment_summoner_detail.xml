@@ -26,10 +26,11 @@
                 android:id="@+id/fcvChampionsMasteries"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/includeSummonerBaseData" />
+                app:layout_constraintTop_toBottomOf="@id/includeSummonerBaseData"
+                tools:layout="@layout/fragment_champions_masteries" />
 
             <!-- <include
                  android:id="@+id/includeChampionsMastery"

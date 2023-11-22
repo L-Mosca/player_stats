@@ -23,6 +23,18 @@
         <argument
             android:name="summonerData"
             app:argType="br.com.lol_app.domain.model.summoner.SummonerResponse" />
+        <action
+            android:id="@+id/action_summonerDetailFragment_to_championMasteryDetailFragment"
+            app:destination="@id/allChampionMasteryFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/allChampionMasteryFragment"
+        android:name="br.com.lol_app.screen.allchampionmastery.AllChampionMasteryFragment"
+        android:label="AllChampionMasteryFragment"
+        tools:layout="@layout/fragment_all_champion_mastery">
+        <argument
+            android:name="summonerData"
+            app:argType="br.com.lol_app.domain.model.summoner.SummonerResponse" />
     </fragment>
 </navigation>

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import br.com.lol_app.R
 import br.com.lol_app.base.BaseViewModel
 import br.com.lol_app.domain.model.champions.ChampionBaseData
+import br.com.lol_app.domain.model.summoner.SummonerBaseData
 import br.com.lol_app.domain.repositories.champion.ChampionRepositoryContract
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -24,6 +25,9 @@ class ChampionsMasteriesViewModel @Inject constructor(private val championReposi
 
     val slideDownAnimation: LiveData<Pair<Animation, Animation>> get() = _slideDownAnimation
     private val _slideDownAnimation = MutableLiveData<Pair<Animation, Animation>>()
+
+    private val _summonerBaseData = MutableLiveData<SummonerBaseData>()
+    val summonerBaseData: LiveData<SummonerBaseData> get() = _summonerBaseData
 
     fun fetchChampionsMasteries(summonerId: String) {
         defaultLaunch {
