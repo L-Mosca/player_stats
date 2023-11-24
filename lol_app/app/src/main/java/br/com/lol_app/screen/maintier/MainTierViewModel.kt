@@ -18,7 +18,7 @@ class MainTierViewModel @Inject constructor(private val summonerRepository: Summ
     fun fetchMainTierData(summonerId: String) {
         defaultLaunch {
             val response = summonerRepository.fetchSummonerMainTier(summonerId)
-            if (response != null) _mainTierData.postValue(response)
+            if (response != null) _mainTierData.postValue(response!!)
         }
     }
 

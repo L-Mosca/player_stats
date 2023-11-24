@@ -6,9 +6,20 @@ plugins {
     id 'com.google.dagger.hilt.android'
     id 'kotlin-parcelize'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('../key/key_store.jks')
+            storePassword '@PlayerStats09'
+            keyAlias '@PlayerStats09'
+            keyPassword '@PlayerStats09'
+        }
+    }
+
+
     namespace 'br.com.lol_app'
     compileSdk 34
 
@@ -17,7 +28,7 @@ android {
         minSdk 24
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -33,8 +44,9 @@ android {
         }
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig release.signingConfig
+            signingConfig signingConfigs.release
         }
     }
 
