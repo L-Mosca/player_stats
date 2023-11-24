@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "392961422946",
+    "project_id": "player-stats-81b7e",
+    "storage_bucket": "player-stats-81b7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392961422946:android:692014545d3c93f4e2c33b",
+        "android_client_info": {
+          "package_name": "br.com.lol_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKEwct_LSM6RUgdx3OelUHUIQ25OWvpPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392961422946:android:6afc24d860756fa7e2c33b",
+        "android_client_info": {
+          "package_name": "br.com.lol_app.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKEwct_LSM6RUgdx3OelUHUIQ25OWvpPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
