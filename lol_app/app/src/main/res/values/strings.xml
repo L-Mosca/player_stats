@@ -356,7 +356,24 @@
     <string name="naafiri_description">Fera Das Cem Mordidas</string>
     <string name="invalid_champion_id_description"> </string>
 
+    <!--Summoner Tier-->
+    <string name="summoner_tier">Ranque do invocador</string>
+    <string name="solo_duo">Solo/Duo</string>
+    <string name="flex">Flex 5v5</string>
+    <string name="win_rate">Taxa de vitória: %s</string>
+    <string name="tier_description">%1$s %2$s - %3$d PdL</string>
 
-
-
+    <!--Tier-->
+    <string name="tier_unranked">Unranked</string>
+    <string name="tier_iron">Ferro</string>
+    <string name="tier_bronze">Bronze</string>
+    <string name="tier_silver">Prata</string>
+    <string name="tier_gold">Ouro</string>
+    <string name="tier_platinum">Platina</string>
+    <string name="tier_emerald">Esmeralda</string>
+    <string name="tier_diamond">Diamante</string>
+    <string name="tier_master">Mestre</string>
+    <string name="tier_grandmaster">Grão-Mestre</string>
+    <string name="tier_challenger">Desafiante</string>
+    <string name="no_tier_data_found">Ops! Parece que o Teemo\n\comeu seus dados</string>
 </resources>

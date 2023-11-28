@@ -13,5 +13,5 @@ interface ApiHelperContract {
 
     suspend fun fetchChampionsMasteries(summonerId: String): List<ChampionBaseData>?
 
-    suspend fun fetchSummonerMainTier(summonerId: String): SummonerMainTierResponse?
+    suspend fun fetchSummonerMainTier(summonerId: String): List<SummonerMainTierResponse?>
 }

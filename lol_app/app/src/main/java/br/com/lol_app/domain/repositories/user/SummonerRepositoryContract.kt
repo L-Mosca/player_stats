@@ -7,5 +7,5 @@ interface SummonerRepositoryContract {
 
    suspend fun fetchSummonerByName(summonerName: String) : SummonerResponse?
 
-   suspend fun fetchSummonerMainTier(summonerId: String) : SummonerMainTierResponse?
+   suspend fun fetchSummonerMainTier(summonerId: String) : List<SummonerMainTierResponse?>
 }

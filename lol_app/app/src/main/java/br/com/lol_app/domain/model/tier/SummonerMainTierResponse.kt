@@ -37,7 +37,7 @@ data class SummonerMainTierResponse(
     @SerializedName("inactive")
     val inactive: Boolean?,
     @SerializedName("miniSeries")
-    val miniSeries: MiniSeries?,
+    val miniSeries: List<MiniSeries?>?,
 ) : Parcelable
 
 @Parcelize
