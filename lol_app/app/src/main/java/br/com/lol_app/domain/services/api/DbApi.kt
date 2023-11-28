@@ -80,5 +80,5 @@ interface DbApi {
      * @see ApiConstants.SUMMONER_MAIN_TIER
      */
     @GET(ApiConstants.SUMMONER_MAIN_TIER)
-    suspend fun fetchSummonerMainTier(@Path("encryptedSummonerId") summonerId: String): SummonerMainTierResponse?
+    suspend fun fetchSummonerMainTier(@Path("encryptedSummonerId") summonerId: String): List<SummonerMainTierResponse?>
 }

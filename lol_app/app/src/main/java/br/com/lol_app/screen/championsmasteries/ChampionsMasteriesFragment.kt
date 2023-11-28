@@ -5,6 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import br.com.lol_app.R
@@ -36,6 +37,10 @@ class ChampionsMasteriesFragment : BaseFragment<FragmentChampionsMasteriesBindin
     private var summonerData: SummonerResponse? = null
 
     override fun initViews() {
+        binding.tvSeeAll.setOnClickListener {
+            Toast.makeText(requireContext(), "Em desenvolvimento", Toast.LENGTH_SHORT).show()
+        }
+
         binding.ivToggleViewChampionsMasteries.setOnClickListener {
             viewModel.setListAnimation(binding.rvChampionsMasteries.isVisible, requireContext())
         }
