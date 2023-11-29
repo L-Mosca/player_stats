@@ -13,7 +13,7 @@
     <string name="summoner_not_found">Nenhum invocador encontrado</string>
     <string name="search_summoner_name">Busque um invocador</string>
     <string name="recent_search">Pesquisas recentes</string>
-
+    <string name="no_summoner_found">Ops! O Teemo não encontrou\n\pesquisas recentes</string>
 
     <!-- Summoner Detail -->
     <string name="summoner_level">- %d</string>

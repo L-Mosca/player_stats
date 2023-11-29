@@ -9,9 +9,9 @@ import androidx.navigation.fragment.findNavController
 import br.com.lol_app.R
 import br.com.lol_app.base.BaseFragment
 import br.com.lol_app.databinding.FragmentFindSummonerBinding
-import br.com.lol_app.domain.model.summoner.SummonerResponse
-import br.com.lol_app.screen.host.MainViewModel
+import br.com.lol_app.domain.model.summoner.SummonerEntity
 import br.com.lol_app.screen.findsummoner.adapter.RecentSummonerAdapter
+import br.com.lol_app.screen.host.MainViewModel
 import br.com.lol_app.utils.LoadingType
 import br.com.lol_app.utils.hideKeyboard
 import br.com.lol_app.utils.navigate
@@ -29,7 +29,6 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
     override fun initViews() {
         setupBackPressed()
         setupEditText()
-        setupRecycler()
         setupRecentSummonerAnimation()
     }
 
@@ -79,6 +78,16 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
             binding.etSummonerName.clearFocus()
             hideKeyboard()
         }
+
+        viewModel.recentSummoners.observe(viewLifecycleOwner) { summonerList ->
+            setupRecycler(summonerList)
+            showEmptyRecentSummoner(summonerList.isNotEmpty())
+        }
+
+        viewModel.deleteItem.observe(viewLifecycleOwner) { position ->
+            adapter.removeItem(position)
+            showEmptyRecentSummoner(adapter.dataList.isNotEmpty())
+        }
     }
 
     private fun setupEditText() {
@@ -97,31 +106,27 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
             binding.includeEmptySummoner.llEmptySummoner.visibility = View.GONE
     }
 
-    private fun setupRecycler() {
-        val list = mutableListOf<SummonerResponse>()
+    private fun setupRecycler(summonerList: List<SummonerEntity>) {
+        binding.includeRecentSummoner.rvRecentSearch.isVisible = summonerList.isNotEmpty()
 
-        var i = 0
-        while (i < 15) {
-            list.add(
-                SummonerResponse(
-                    id = "1",
-                    accountId = "1",
-                    pUUid = "1",
-                    name = "Lêmure de Muleta",
-                    profileIconId = 1,
-                    revisionDate = 1000,
-                    summonerLevel = 400
-                )
-            )
-            i++
-        }
-
-        adapter.dataList = list
+        adapter.dataList = summonerList
         binding.includeRecentSummoner.rvRecentSearch.adapter = adapter
 
-        adapter.onItemClicked = {}
+        adapter.onItemClicked = { summonerData ->
+            viewModel.onRecentSummonerClicked(summonerData)
+        }
         adapter.onFavoriteClicked = { _, _ -> }
-        adapter.onDeleteClicked = { _, _ -> }
+        adapter.onDeleteClicked = { summonerData, position ->
+            viewModel.onDeleteClicked(summonerData, position)
+        }
+    }
+
+    private fun showEmptyRecentSummoner(hasData: Boolean) {
+        with(binding.includeRecentSummoner) {
+            ivToggleView.isVisible = hasData
+            clSummonerList.isVisible = hasData
+            includeEmptySummonerSearch.clEmptySummonerSearch.isVisible = !hasData
+        }
     }
 
     private fun setupRecentSummonerAnimation() {
@@ -137,6 +142,11 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
             findNavController().popBackStack(R.id.home_nav_graph, false)
             mainSharedViewModel.showHomeScreen()
         }
+    }
+
+    override fun onResume() {
+        viewModel.fetchRecentSummoners()
+        super.onResume()
     }
 
     override fun onDestroyView() {

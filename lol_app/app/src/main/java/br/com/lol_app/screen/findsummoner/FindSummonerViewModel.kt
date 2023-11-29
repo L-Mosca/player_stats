@@ -8,8 +8,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.com.lol_app.R
 import br.com.lol_app.base.BaseViewModel
+import br.com.lol_app.domain.model.summoner.SummonerEntity
 import br.com.lol_app.domain.model.summoner.SummonerResponse
 import br.com.lol_app.domain.repositories.user.SummonerRepositoryContract
+import br.com.lol_app.utils.toSummonerEntity
+import br.com.lol_app.utils.toSummonerResponse
+import br.com.lol_app.utils.updateDate
 import com.facebook.stetho.server.http.HttpStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.HttpException
@@ -33,6 +37,12 @@ class FindSummonerViewModel @Inject constructor(private val summonerRepository: 
     val slideDownAnimation: LiveData<Pair<Animation, Animation>> get() = _slideDownAnimation
     private val _slideDownAnimation = MutableLiveData<Pair<Animation, Animation>>()
 
+    val recentSummoners: LiveData<List<SummonerEntity>> get() = _recentSummoners
+    private val _recentSummoners = MutableLiveData<List<SummonerEntity>>()
+
+    val deleteItem: LiveData<Int> get() = _deleteItem
+    private val _deleteItem = MutableLiveData<Int>()
+
     fun fetchSummonerByName(summonerName: String, actionId: Int) {
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
             defaultLaunch(exceptionHandler = ({
@@ -43,10 +53,12 @@ class FindSummonerViewModel @Inject constructor(private val summonerRepository: 
                 }
             })) {
                 val response = summonerRepository.fetchSummonerByName(summonerName)
-                if (response != null)
+                if (response != null) {
+                    summonerRepository.insertSummoner(response.toSummonerEntity())
                     _summonerResponse.postValue(response)
-                else
+                } else {
                     _summonerNotFound.postValue(true)
+                }
             }
         }
     }
@@ -69,7 +81,29 @@ class FindSummonerViewModel @Inject constructor(private val summonerRepository: 
         }
     }
 
-    fun resetSummonerValue() = _summonerResponse.postValue(null)
+    fun resetSummonerValue() {
+        _summonerResponse.postValue(null)
+    }
 
+    fun fetchRecentSummoners() {
+        defaultLaunch {
+            val response = summonerRepository.fetchRecentSummoners()
+            _recentSummoners.postValue(response)
+        }
+    }
 
+    fun onRecentSummonerClicked(summonerData: SummonerEntity) {
+        defaultLaunch {
+            val summoner = summonerData.updateDate()
+            summonerRepository.updateSummonerData(summoner)
+            _summonerResponse.postValue(summoner.toSummonerResponse())
+        }
+    }
+
+    fun onDeleteClicked(summonerData: SummonerEntity, position: Int) {
+        defaultLaunch {
+            summonerRepository.deleteSummoner(summonerData)
+            _deleteItem.postValue(position)
+        }
+    }
 }
