@@ -9,8 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SummonerDetailViewModel @Inject constructor() :
-    BaseViewModel() {
+class SummonerDetailViewModel @Inject constructor() : BaseViewModel() {
 
 
     private val _summonerBaseData = MutableLiveData<SummonerBaseData>()

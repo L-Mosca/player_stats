@@ -1,8 +1,13 @@
 package br.com.lol_app.domain.model.summoner
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import java.util.Calendar
 
 @Parcelize
 data class SummonerResponse(
@@ -20,4 +25,6 @@ data class SummonerResponse(
     val revisionDate: Long?,
     @SerializedName("summonerLevel")
     val summonerLevel: Int?,
-    ) : Parcelable
+    @SerializedName("lastSearch")
+    var lastSearch: Long? = Calendar.getInstance().time.time
+) : Parcelable
