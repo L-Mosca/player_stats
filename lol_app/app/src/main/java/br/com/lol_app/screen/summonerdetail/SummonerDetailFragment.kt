@@ -11,6 +11,7 @@ import br.com.lol_app.base.BaseFragment
 import br.com.lol_app.databinding.FragmentSummonerDetailBinding
 import br.com.lol_app.screen.championsmasteries.ChampionsMasteriesFragment
 import br.com.lol_app.screen.maintier.MainTierFragment
+import br.com.lol_app.screen.summonermatchhistoric.SummonerMatchHistoricFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,9 +52,18 @@ class SummonerDetailFragment : BaseFragment<FragmentSummonerDetailBinding>() {
         }
     }
 
+    private fun setupMatchHistoric() {
+        val fragment =
+            SummonerMatchHistoricFragment.newInstance(navArgs.summonerData.pUUid.toString())
+        childFragmentManager.commit {
+            replace(R.id.fcvMatchHistoric, fragment)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        setupChampionsMasteries()
         setupTierData()
+        setupChampionsMasteries()
+        setupMatchHistoric()
         super.onCreate(savedInstanceState)
     }
 }

@@ -376,4 +376,7 @@
     <string name="tier_grandmaster">Grão-Mestre</string>
     <string name="tier_challenger">Desafiante</string>
     <string name="no_tier_data_found">Ops! Parece que o Teemo\n\comeu seus dados</string>
+
+    <!--Match Historic-->
+    <string name="no_match_found">Ihhhhhhh… Seu histórico\n\está vazio</string>
 </resources>

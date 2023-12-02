@@ -42,6 +42,16 @@
                 app:layout_constraintTop_toBottomOf="@id/fcvTier"
                 tools:layout="@layout/fragment_champions_masteries" />
 
+            <androidx.fragment.app.FragmentContainerView
+                android:layout_width="0dp"
+                android:id="@+id/fcvMatchHistoric"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fcvChampionsMasteries"
+                tools:layout="@layout/fragment_summoner_match_historic"/>
+
             <!-- <include
                  android:id="@+id/includeChampionsMastery"
                  layout="@layout/include_champions_mastery"

@@ -1,11 +1,8 @@
-package br.com.lol_app.domain.services.api
+package br.com.lol_app.domain.services.api.matchclient
 
 import br.com.lol_app.BuildConfig
-import br.com.lol_app.domain.model.champions.ChampionBaseData
-import br.com.lol_app.domain.model.champions.FreeChampionsResponse
 import br.com.lol_app.domain.model.matches.MatchDetailResponse
-import br.com.lol_app.domain.model.summoner.SummonerResponse
-import br.com.lol_app.domain.model.tier.SummonerMainTierResponse
+import br.com.lol_app.domain.services.api.ApiConstants
 import br.com.lol_app.domain.services.preferences.PreferencesHelperContract
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
@@ -17,12 +14,12 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
-interface DbApi {
+interface MatchApi {
     companion object {
-        fun newInstance(preferencesHelper: PreferencesHelperContract, url: String): DbApi {
+        fun newInstance(preferencesHelper: PreferencesHelperContract, url: String): MatchApi {
             val okHttpClient = getOkHttpClient(preferencesHelper)
             val retrofit = getRetrofit(okHttpClient, url)
-            return retrofit.create(DbApi::class.java)
+            return retrofit.create(MatchApi::class.java)
         }
 
         private fun getRetrofit(okHttpClient: OkHttpClient, url: String): Retrofit {
@@ -61,43 +58,6 @@ interface DbApi {
                 .build()
         }
     }
-
-    /**
-     * Fetch summoner data by name
-     * @param name Summoner name insert by user
-     * @return Return an instance of SummonerResponse
-     * @see SummonerResponse
-     */
-    @GET(ApiConstants.SUMMONER_BY_NAME)
-    suspend fun fetchSummonerByName(@Path("name") name: String): SummonerResponse?
-
-    /**
-     * Fetch free champions rotation (free week)
-     * @return Return an instance of FreeChampionsResponse
-     * @see FreeChampionsResponse
-     */
-    @GET(ApiConstants.FREE_CHAMPIONS_ROTATION)
-    suspend fun fetchFreeChampionsRotation(): FreeChampionsResponse?
-
-    /**
-     * Fetch summoner champions masteries (by descending order)
-     * @param summonerId Summoner ID to fetch (SummonerResponse.ID)
-     * @return Return a List of ChampionBaseData
-     * @see SummonerResponse.id
-     * @see ChampionBaseData
-     */
-    @GET(ApiConstants.CHAMPIONS_MASTERIES_BY_SUMMONER_ID)
-    suspend fun fetchChampionsMasteries(@Path("encryptedSummonerId") summonerId: String): List<ChampionBaseData>?
-
-    /**
-     * Fetch summoner main tier basic data
-     * @param summonerId use how path at *__ApiConstants.SUMMONER_MAIN_TIER__* string to get data in external API.
-     * @return Return SummonerMainTierResponse class with summoner main tier basic data - __/domain/model/tier/SummonerMainTierResponse__
-     * @see SummonerMainTierResponse
-     * @see ApiConstants.SUMMONER_MAIN_TIER
-     */
-    @GET(ApiConstants.SUMMONER_MAIN_TIER)
-    suspend fun fetchSummonerMainTier(@Path("encryptedSummonerId") summonerId: String): List<SummonerMainTierResponse?>
 
     /**
      * Fetch last 100 games historic ID
