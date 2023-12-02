@@ -17,25 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvFreeChampions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TESTE DESSA PORRA"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lcGraph"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvFreeChampionsForNewPlayers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="TESTE DESSA PORRA"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvFreeChampions" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

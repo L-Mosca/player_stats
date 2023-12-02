@@ -1,14 +1,13 @@
 package br.com.lol_app.domain.model.summoner
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import java.util.Calendar
 
+/**
+ * This class are summoner base data and used to fetch all summoner data (matches, rank, masteries, tier...)
+ */
 @Parcelize
 data class SummonerResponse(
     @SerializedName("id")

@@ -33,7 +33,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "APP_NAME", "\"Player Stats/\"")
-        buildConfigField("String", "API_URL", "\"https://br1.api.riotgames.com\"")
+        buildConfigField("String", "API_SUMMONER_URL", "\"https://br1.api.riotgames.com\"")
+        buildConfigField("String", "API_MATCH_URL", "\"https://americas.api.riotgames.com\"")
         buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
     }
 
@@ -58,7 +59,8 @@ android {
             dimension 'environment'
 
             buildConfigField("String", "APP_NAME", "\"[Beta] Player Stats/\"")
-            buildConfigField("String", "API_URL", "\"https://br1.api.riotgames.com\"")
+            buildConfigField("String", "API_SUMMONER_URL", "\"https://br1.api.riotgames.com\"")
+            buildConfigField("String", "API_MATCH_URL", "\"https://americas.api.riotgames.com\"")
             buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
 
         }
@@ -67,7 +69,8 @@ android {
             dimension 'environment'
 
             buildConfigField("String", "APP_NAME", "\"Player Stats/\"")
-            buildConfigField("String", "API_URL", "\"https://br1.api.riotgames.com\"")
+            buildConfigField("String", "API_SUMMONER_URL", "\"https://br1.api.riotgames.com\"")
+            buildConfigField("String", "API_MATCH_URL", "\"https://americas.api.riotgames.com\"")
             buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
         }
     }

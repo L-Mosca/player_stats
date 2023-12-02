@@ -3,12 +3,17 @@ package br.com.lol_app.domain.model.champions
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
 import java.util.Calendar
 import java.util.Date
 
+/**
+ * This class contains a mastery champion data.
+ * @param championId Champion ID. Use ChampionExtensions to get name and description
+ * @param championPoints Champion mastery points
+ * @param championLevel Champion mastery level
+ * @param chestGranted Return true if summoner granted a chest with this champion
+ * @param tokensEarned Champion mastery fragment earned (mastery 6 or mastery 7 fragments)
+ */
 @Parcelize
 data class ChampionBaseData(
     @SerializedName("puuid")
