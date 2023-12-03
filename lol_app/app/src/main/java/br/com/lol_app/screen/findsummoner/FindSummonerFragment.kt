@@ -5,7 +5,6 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import br.com.lol_app.R
 import br.com.lol_app.base.BaseFragment
 import br.com.lol_app.databinding.FragmentFindSummonerBinding
@@ -86,6 +85,7 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
 
         viewModel.deleteItem.observe(viewLifecycleOwner) { position ->
             adapter.removeItem(position)
+            adapter.notifyItemRemoved(position)
             showEmptyRecentSummoner(adapter.dataList.isNotEmpty())
         }
     }
@@ -139,8 +139,9 @@ class FindSummonerFragment : BaseFragment<FragmentFindSummonerBinding>() {
 
     private fun setupBackPressed() {
         onBackPressed {
-            findNavController().popBackStack(R.id.home_nav_graph, false)
-            mainSharedViewModel.showHomeScreen()
+            requireActivity().moveTaskToBack(true)
+            /*findNavController().popBackStack(R.id.home_nav_graph, false)
+            mainSharedViewModel.showHomeScreen()*/
         }
     }
 

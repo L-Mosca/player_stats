@@ -24,7 +24,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     override fun initObservers() {
         viewModel.showHomeScreen.observe(viewLifecycleOwner) {
-            mainSharedViewModel.showHomeScreen()
+            mainSharedViewModel.showStatsScreen()
         }
     }
 }

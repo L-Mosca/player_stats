@@ -23,7 +23,7 @@
             android:id="@+id/etSummonerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue_500"
+            android:background="@color/blue_400"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:hint="@string/summoner_name"
@@ -43,7 +43,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tilSummonerName" />
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -54,7 +53,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_800">
 
             <include
                 android:id="@+id/includeEmptySummoner"
