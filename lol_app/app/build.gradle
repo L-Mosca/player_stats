@@ -12,10 +12,10 @@ plugins {
 android {
     signingConfigs {
         release {
-            storeFile file('../key/key_store.jks')
-            storePassword '@PlayerStats09'
-            keyAlias '@PlayerStats09'
-            keyPassword '@PlayerStats09'
+            storeFile file(' ')
+            storePassword ' '
+            keyAlias ' '
+            keyPassword ' '
         }
     }
 
@@ -35,7 +35,7 @@ android {
         buildConfigField("String", "APP_NAME", "\"Player Stats/\"")
         buildConfigField("String", "API_SUMMONER_URL", "\"https://br1.api.riotgames.com\"")
         buildConfigField("String", "API_MATCH_URL", "\"https://americas.api.riotgames.com\"")
-        buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
+        buildConfigField("String", "API_KEY", "\" \"")
     }
 
     buildTypes {
@@ -61,7 +61,7 @@ android {
             buildConfigField("String", "APP_NAME", "\"[Beta] Player Stats/\"")
             buildConfigField("String", "API_SUMMONER_URL", "\"https://br1.api.riotgames.com\"")
             buildConfigField("String", "API_MATCH_URL", "\"https://americas.api.riotgames.com\"")
-            buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
+            buildConfigField("String", "API_KEY", "\" \"")
 
         }
         prod {
@@ -71,7 +71,7 @@ android {
             buildConfigField("String", "APP_NAME", "\"Player Stats/\"")
             buildConfigField("String", "API_SUMMONER_URL", "\"https://br1.api.riotgames.com\"")
             buildConfigField("String", "API_MATCH_URL", "\"https://americas.api.riotgames.com\"")
-            buildConfigField("String", "API_KEY", "\"RGAPI-a137151b-3b38-4793-97eb-5ff5dfa98ba2\"")
+            buildConfigField("String", "API_KEY", "\" \"")
         }
     }
 
